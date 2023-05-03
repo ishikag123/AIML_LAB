@@ -1,0 +1,36 @@
+import matplotlib.pyplot as plt
+# Define the neural network architecture
+input_layer = 2
+hidden_layer = 3
+output_layer = 1
+# Plot the neural network
+fig, ax = plt.subplots(figsize=(8, 5))
+# Add the input layer nodes
+for i in range(input_layer):
+
+  ax.add_artist(plt.Circle((0, i), 0.1, color='blue'))
+  ax.annotate(f'Input {i+1}', xy=(0, i), fontsize=12, ha='center', va='center')
+# Add the hidden layer nodes
+for i in range(hidden_layer):
+  ax.add_artist(plt.Circle((0.5, i+1), 0.1, color='green'))
+  ax.annotate(f'Hidden {i+1}', xy=(0.5, i+1), fontsize=12, ha='center',va='center')
+# Add the output layer nodes
+for i in range(output_layer):
+  ax.add_artist(plt.Circle((1, i+1), 0.1, color='red'))
+  ax.annotate(f'Output {i+1}', xy=(1, i+1), fontsize=12, ha='center',va='center')
+# Connect the input layer to the hidden layer
+for i in range(input_layer):
+  for j in range(hidden_layer):
+     ax.plot([0, 0.5], [i, j+1], color='black')
+# Connect the hidden layer to the output layer
+for i in range(hidden_layer):
+  for j in range(output_layer):
+    ax.plot([0.5, 1], [i+1, j+1], color='black')
+# Add titles and labels
+ax.set_title('Neural Network Visualization', fontsize=16)
+ax.set_xlabel('Layers', fontsize=14)
+ax.set_ylabel('Nodes', fontsize=14)
+ax.set_xticks([0, 0.5, 1])
+ax.set_xticklabels(['Input', 'Hidden', 'Output'], fontsize=12)
+# Show the plot
+plt.show()
