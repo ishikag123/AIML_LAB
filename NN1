@@ -1,0 +1,23 @@
+# import module
+from graphviz import Digraph
+# instantiating object
+dot = Digraph(comment='A Round Graph')
+# Adding nodes
+dot.node('A', 'Input1')
+dot.node('B', 'Input2')
+dot.node('C', 'input3')
+dot.node('D', 'Hiden11')
+dot.node('E', 'Hiden12')
+dot.node('F', 'Output')
+# Adding edges
+dot.edges(['AD', 'BD', 'CD'])
+dot.edges(['AE', 'BE', 'CE'])
+dot.edges(['DF', 'EF'])
+# saving source code
+dot.format = 'png'
+dot.render('Graph', view = True)
+from matplotlib import pyplot as plt
+from matplotlib import image as mpimg
+image = mpimg.imread("Graph.png")
+plt.imshow(image)
+plt.show()
